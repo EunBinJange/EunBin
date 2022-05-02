@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRd;
-    float speed = 2.0f; //속도
+    float speed = 1.0f; //속도
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +43,14 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKey(KeyCode.Space)==true)
         {
             playerRd.AddForce(0f, speed, 0f);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag ("WALL"))
+        {
+            Debug.Log("Collision");
         }
     }
 }
